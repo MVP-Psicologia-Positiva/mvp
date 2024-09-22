@@ -1,29 +1,57 @@
 import streamlit as st
-
+from langchain_community.chat_models import ChatOpenAI
+from langchain_community.tools import DuckDuckGoSearchRun
 from langchain.agents import initialize_agent, AgentType
 from langchain.callbacks import StreamlitCallbackHandler
 from langchain.chat_models import ChatOpenAI
 from langchain.tools import DuckDuckGoSearchRun
 
-with st.sidebar:
-    openai_api_key = st.text_input(
-        "OpenAI API Key", key="langchain_search_api_key_openai", type="password"
-    )
+openai_api_key = st.secrets["OPENAI"]["api_key"]
 
+######################################################
+########################################## Page config
+######################################################
 
 st.title("MVP - Positive psychology")
 
+# Seletor de idioma
+if "language" not in st.session_state:
+    st.session_state["language"] = "Português"
 
+language = st.selectbox(
+    "Escolha seu idioma:", 
+    ["Português", "English", "Español", "Deutsch", "Lëtzebuergesch"], 
+    index=["Português", "English", "Español", "Deutsch", "Lëtzebuergesch"].index(st.session_state["language"])
+)
+
+# Atualiza o idioma selecionado
+st.session_state["language"] = language
+
+# Mensagens iniciais em diferentes idiomas
+welcome_messages = {
+    "Português": "Oi, eu sou Lulu. Gostaria de brincar com você. Vamos conversar?",
+    "English": "Hi, I'm Lulu. I'd like to play with you. Shall we chat?",
+    "Español": "Hola, soy Lulu. Me gustaría jugar contigo. ¿Vamos a charlar?",
+    "Deutsch": "Hallo, ich bin Lulu. Ich würde gerne mit dir spielen. Sollen wir reden?",
+    "Lëtzebuergesch": "Moien, ech sinn Lulu. Ech géif gär mat dir spillen. Wëlls de schwätzen?"
+}
 
 if "messages" not in st.session_state:
     st.session_state["messages"] = [
-        {"role": "assistant", "content": "Hi, I'm the chat bot that can play with you. Shall we chat?"}
+        {"role": "assistant", "content": welcome_messages[language]}
     ]
+else:
+    # Atualiza a saudação se o idioma mudar
+    if st.session_state["messages"][0]["content"] != welcome_messages[language]:
+        st.session_state["messages"] = [
+            {"role": "assistant", "content": welcome_messages[language]}
+        ]
+        
 
 for msg in st.session_state.messages:
     st.chat_message(msg["role"]).write(msg["content"])
 
-if prompt := st.chat_input(placeholder="Who won the Women's U.S. Open in 2018?"):
+if prompt := st.chat_input(placeholder="How are you today?"):
     st.session_state.messages.append({"role": "user", "content": prompt})
     st.chat_message("user").write(prompt)
 
