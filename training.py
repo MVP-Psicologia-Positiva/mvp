@@ -1,7 +1,7 @@
 from transformers import GPT2Tokenizer, GPT2LMHeadModel, Trainer, TrainingArguments
 import torch
 
-
+## treiando nome lulu
 # Carregar modelo e tokenizador
 model_name = "gpt2"
 tokenizer = GPT2Tokenizer.from_pretrained(model_name)
