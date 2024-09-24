@@ -14,39 +14,10 @@ openai_api_key = st.secrets["OPENAI"]["api_key"]
 
 st.title("MVP - Positive psychology")
 
-# Seletor de idioma
-if "language" not in st.session_state:
-    st.session_state["language"] = "Português"
-
-language = st.selectbox(
-    "Escolha seu idioma:", 
-    ["Português", "English", "Español", "Deutsch", "Lëtzebuergesch"], 
-    index=["Português", "English", "Español", "Deutsch", "Lëtzebuergesch"].index(st.session_state["language"])
-)
-
-# Atualiza o idioma selecionado
-st.session_state["language"] = language
-
-# Mensagens iniciais em diferentes idiomas
-welcome_messages = {
-    "Português": "Oi, eu sou Lulu. Gostaria de brincar com você. Vamos conversar?",
-    "English": "Hi, I'm Lulu. I'd like to play with you. Shall we chat?",
-    "Español": "Hola, soy Lulu. Me gustaría jugar contigo. ¿Vamos a charlar?",
-    "Deutsch": "Hallo, ich bin Lulu. Ich würde gerne mit dir spielen. Sollen wir reden?",
-    "Lëtzebuergesch": "Moien, ech sinn Lulu. Ech géif gär mat dir spillen. Wëlls de schwätzen?"
-}
-
 if "messages" not in st.session_state:
     st.session_state["messages"] = [
-        {"role": "assistant", "content": welcome_messages[language]}
+        {"role": "assistant", "content": "Hi, I'm Lulu. I'd like to play with you. Shall we chat?"}
     ]
-else:
-    # Atualiza a saudação se o idioma mudar
-    if st.session_state["messages"][0]["content"] != welcome_messages[language]:
-        st.session_state["messages"] = [
-            {"role": "assistant", "content": welcome_messages[language]}
-        ]
-        
 
 for msg in st.session_state.messages:
     st.chat_message(msg["role"]).write(msg["content"])
