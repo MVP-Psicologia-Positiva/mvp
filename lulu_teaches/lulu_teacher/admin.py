@@ -1,8 +1,9 @@
 from django.contrib import admin
 
-# Register your models here.
 from django.contrib import admin
 
-from .models import historicalSessions
+from .models import historicalSessions, UsersMilestones, luluTrainning
 
 admin.site.register(historicalSessions)
+admin.site.register(UsersMilestones)
+admin.site.register(luluTrainning)
