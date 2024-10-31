@@ -2,8 +2,8 @@ from django.db import models
 from django.contrib.auth.models import User
 
 class historicalSessions(models.Model):
-    sessionDate = models.DateTimeField("session date")
-    username = models.ForeignKey(User, on_delete=models.CASCADE)
+    sessionDate = models.DateTimeField("session date", default="")
+    username = models.ForeignKey(User, on_delete=models.CASCADE, null=False)
 
 class luluTrainning(models.Model):
     version_title = models.CharField(max_length=255)
