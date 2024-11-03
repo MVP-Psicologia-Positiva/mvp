@@ -1,0 +1,81 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lulu</title>
+
+    <link rel="stylesheet" href="{% static 'css/styles_b.css' %}" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Roboto&display=swap"
+    />
+  </head>
+  <body>
+    <header>
+      <div class="page_title">
+        <h1>User Test</h1>
+      </div>
+    </header>
+
+    <div class="main">
+
+      <div class="chat-main">
+
+        <h1>Hi, {{ user.first_name }}</h1>
+
+        <div class="chat-container">
+
+          <div class="chat-box" id="chat-box">
+
+            <div class="chat-message bot-message">
+              Hello! How can I help you today?
+            </div>
+
+          </div>
+
+          <input type="text" id="user-input" placeholder="Type your message..."/>
+
+          <button id="send-button">Send</button>
+        </div>
+
+        <div class="feedback-container">
+
+          <div class="feedback-text">
+            <h3>Feedback</h3>
+            <p>How well am I doing?</p>
+          </div>
+
+          <div class="rating">
+            <span class="star" data-value="1">&#9733;</span>
+            <span class="star" data-value="2">&#9733;</span>
+            <span class="star" data-value="3">&#9733;</span>
+            <span class="star" data-value="4">&#9733;</span>
+            <span class="star" data-value="5">&#9733;</span>
+          </div>
+
+        </div>
+      </div>
+
+        <div class="starters-container">
+          <img
+            src="{% static 'img/lulu_bot.png' %}"
+            alt="Image Description"
+            class="starters-image"
+          />
+          <h3>Starters</h3>
+          <ul>
+            <li>I want to practice French.</li>
+            <li>Help me in geography.</li>
+            <li>I am new in Luxembourg.</li>
+          </ul>
+        </div>
+
+      
+      
+    </div>
+
+    <script src="{% static 'js/script.js' %}"></script>
+  </body>
+</html>
