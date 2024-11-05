@@ -1,0 +1,1 @@
+web: gunicorn lulu_teaches/mvp.wsgi
