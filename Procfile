@@ -1,1 +1,1 @@
-web: gunicorn lulu_teaches/mvp.wsgi
+web: gunicorn mvp.wsgi
