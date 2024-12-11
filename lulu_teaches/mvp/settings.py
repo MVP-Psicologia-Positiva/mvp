@@ -8,8 +8,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Quick-start development settings - unsuitable for production
 SECRET_KEY = 'django-insecure-oqhg^0#w69ah(_0&r@bvn)v3d)6$g_#@-k$5cyd3s*w%*0b(qt'
-DEBUG = True
-ALLOWED_HOSTS = []
+DEBUG = False
+ALLOWED_HOSTS = ['https://img-lulu-mvp-988538575854.us-central1.run.app/']
 
 # Application definition
 INSTALLED_APPS = [
@@ -62,6 +62,16 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.postgresql',
+#        'NAME': 'lulu-mvp:us-central1:sql-lulu-mvp',  # Substitua pelo nome do seu banco de dados
+#        'USER': 'postgres',  # Usuário do PostgreSQL
+#        'PASSWORD': 'lulu220727',  # Substitua pela senha do PostgreSQL
+#        'HOST': '34.136.145.218',  # IP público da instância no Cloud SQL
+#        'PORT': '5432',  # Porta padrão do PostgreSQL
+#    }
+#}
 
 AUTH_PASSWORD_VALIDATORS = [
     {

@@ -1,0 +1,14 @@
+<!-- sidebar.html -->
+<aside class="sidebar">
+    <h2>Menu</h2>
+    <ul>
+        <li><a href="{% url 'home' %}">Home</a></li>
+        <li><a href="lulu-a">Lulu A</a></li>
+        <li><a href="lulu-b">Lulu B</a></li>
+        <li class="selected"><a href="{% url 'register' %}">Users</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="lulu_icon">
+        <img src="{% static 'img/lulu_bot.png' %}" alt="Image Description" class="starters-image" />
+    </div>
+</aside>

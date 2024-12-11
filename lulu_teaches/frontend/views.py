@@ -12,6 +12,9 @@ def view_lulu_a(request):
 def view_lulu_b(request):
     return render(request, 'lulu-b.html')
 
+def view_training_files(request):
+    return render(request, 'trainingFiles.html')
+
 def view_login(request):
     if request.method == 'POST':
         username = request.POST['username']

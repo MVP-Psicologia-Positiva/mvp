@@ -1,0 +1,93 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lulu MVP | Training and Fine Tune Files</title>
+    <link rel="stylesheet" href="{% static 'css/home_styles.css' %}">
+
+</head>
+<body>
+    <div class="container">
+        
+        <aside class="sidebar">
+            <h2>Menu</h2>
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="lulu-a">Lulu A</a></li>
+                <li><a href="lulu-b">Lulu B</a></li>
+                <li><a href="{% url 'register' %}">Users</a></li>
+                <li class="selected"><a href="{% url 'register' %}">Training Files</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="lulu_icon">
+                <img src="{% static 'img/lulu_bot.png' %}" alt="Image Description" class="starters-image" />
+            </div>
+        </aside>
+
+        <main class="content">
+            <h1>Training and Fine Tune Files</h1>
+            <button id="openModal" class="new-user-button">New File</button>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>File Name</th>
+                        <th>File Proposal</th>
+                        <th>File</th>
+                        <th>Created By</th>
+                        <th>Created Date</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for user in users %}
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+            <!-- Modal para o Formulário -->
+            <div id="userModal" class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <h2>New File</h2>
+                    <form method="POST" action="{% url 'register' %}">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <button type="submit">Save</button>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        var modal = document.getElementById("userModal");
+        var btn = document.getElementById("openModal");
+        var span = document.getElementsByClassName("close")[0];
+
+        btn.onclick = function() {
+            modal.style.display = "block";
+        }
+
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>
