@@ -8,7 +8,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Quick-start development settings - unsuitable for production
 SECRET_KEY = 'django-insecure-oqhg^0#w69ah(_0&r@bvn)v3d)6$g_#@-k$5cyd3s*w%*0b(qt'
-DEBUG = False
+DEBUG = True
 ALLOWED_HOSTS = ['https://img-lulu-mvp-988538575854.us-central1.run.app/']
 
 # Application definition
@@ -35,6 +35,10 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+]
+
 ROOT_URLCONF = 'mvp.urls'
 
 TEMPLATES = [
@@ -56,22 +60,26 @@ TEMPLATES = [
 WSGI_APPLICATION = 'mvp.wsgi.application'
 
 # Database
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+if(DEBUG==True):
+    DATABASES = { 
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'lulu-mvp',
+            'USER':'postgres',
+            'PASSWORD': 'lulu220727',
+            'HOST': 'localhost'
+        }
     }
-}
-#DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.postgresql',
-#        'NAME': 'lulu-mvp:us-central1:sql-lulu-mvp',  # Substitua pelo nome do seu banco de dados
-#        'USER': 'postgres',  # Usuário do PostgreSQL
-#        'PASSWORD': 'lulu220727',  # Substitua pela senha do PostgreSQL
-#        'HOST': '34.136.145.218',  # IP público da instância no Cloud SQL
-#        'PORT': '5432',  # Porta padrão do PostgreSQL
-#    }
-#}
+else: 
+    DATABASES = { 
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': '??????',
+            'USER':'postgres',
+            'PASSWORD': '??????',
+            'HOST': '??????'
+        }
+    }
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -87,6 +95,10 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+LOGIN_URL = '/login/'  # Caminho da sua página de login
+LOGIN_REDIRECT_URL = '/'  # Caminho após login bem-sucedido
+LOGOUT_REDIRECT_URL = '/login/'  # Caminho após logout
 
 LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'UTC'

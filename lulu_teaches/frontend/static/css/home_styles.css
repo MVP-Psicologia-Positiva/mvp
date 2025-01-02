@@ -5,75 +5,17 @@ html,body {
     height: 100%;
 }
 
+
+
 .container {
     display: flex;
     height: 100%;
 }
 
-.sidebar {
-    width: 250px; 
-    background: linear-gradient(to bottom, #8761fc, #5ddee6);
-    color: white;
-    padding: 30px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.sidebar h2 {
-    margin-top: 0;
-}
-
-.sidebar ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-.sidebar ul li {
-    margin: 10px 0;
-}
-
-.sidebar ul li a {
-    color: white;
-    text-decoration: none; 
-    transition: background-color 0.3s; 
-}
-
-.sidebar ul li.selected {
-    font-weight: bold;
-    background-color: white; 
-    padding: 5px; 
-    border-radius: 5px;
-}
-
-.sidebar ul li.selected a {
-    color:#8761fc;
-}
-
-.sidebar ul li:hover {
-    background-color: white; 
-    padding: 5px; 
-    border-radius: 5px; 
-}
-.sidebar ul li:hover a {
-    color:#8761fc;
-    font-weight: bold
-}
-
-.sidebar .lulu_icon {
-    margin-top: auto;
-    text-align: center;
-}
-
-.starters-image {
-    max-width: 80%;
-    height: auto;
-}
-
-
 .content {
     flex: 1; 
     padding: 20px;
+    
     background-color: #f4f4f4; 
 }
 
@@ -218,4 +160,78 @@ tr:nth-child(even) {
     color: black;
     text-decoration: none;
     cursor: pointer;
+}
+
+.div_models {
+    display: flex;
+    flex-direction: column; 
+    justify-content: center; 
+    align-items: center; 
+    text-align: center; 
+    padding-top: 60px;
+    
+}
+
+.div_models h1 {
+    margin: 0;
+   
+    font-weight: bold;
+    background: linear-gradient(to right, #8d53ff, #5ddee6); 
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+.div_models h4 {
+    margin: 0; 
+    font-size: 12px;
+    color:#333;
+    font-weight: lighter;
+}
+
+.footer {
+    position: fixed;
+    bottom: 0; 
+    width: 100%; 
+    height: 10%;
+    background-color: #f1f1f1; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center; 
+    
+    box-sizing: border-box; 
+}
+
+.footer p {
+    margin: 0; 
+    font-size: 12px;
+    color: #333; 
+}
+
+
+
+.div_carrosel_models {
+    padding-top: 30px;
+    position: relative;
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+}
+
+.carousel-container {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.carousel-item {
+    min-width: 100%;
+    box-sizing: border-box;
+}
+
+.carousel-img {
+    object-fit: contain; /* Garante que a imagem se ajuste ao contêiner sem distorcer */
+    margin: 0 ;   /* Centraliza a imagem horizontalmente */
+   
+    top: 50%;         /* Posiciona a imagem verticalmente no meio da tela */
+    left: 50%;        /* Posiciona a imagem horizontalmente no meio da tela */
 }

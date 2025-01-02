@@ -1,50 +1,51 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página com Sidebar</title>
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Página com Sidebar</title>
+        <link rel="stylesheet" href="{% static 'css/home_styles.css' %}">
 
-    <link rel="stylesheet" href="{% static 'css/home_styles.css' %}">
-</head>
-<body>
-    <div class="container">
-        <aside class="sidebar">
-            <h2>Menu</h2>
-            <ul>
-                <li class="selected"><a href="home" >Home</a></li>
-                <li><a href="lulu-a">Lulu A</a></li>
-                <li><a href="lulu-b">Lulu B</a></li>
-                <li><a href="register">Users</a></li>
-                <li><a href="trainingFiles">Training Files</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            <div class ="lulu_icon">
-                <img src="{% static 'img/lulu_bot.png' %}" alt="Image Description" class="starters-image" />  
-            </div>
-        </aside>
-        <main class="content">
-            <h1>Hi, {{user.first_name }}!</h1>
-            <p>
-                Welcome to the Lulu homepage! This is your space to analyze tests and check the development history in a light and fun way. Here, you’ll get to understand everything that happens behind the scenes of Lulu while also feeling that exciting anticipation for the future versions coming up. Feel free to explore and be surprised by the new features!</p>
-            <section id="home">
-                <h2>Purpose of the Lulu AI</h2>
-                <p>The purpose of the MLL AI is to assist students providing interactive, dynamic language support. The AI should adapt to the student’s proficiency level and help them navigate language learning challenges in everyday school situations.</p>
-            </section>
-            <section id="about">
-                <h2>About Developers</h2>
-                <p>In an increasingly digital world, two developers are always connected, not just to their screens but also to the desire to use technology to make a difference in people's lives. With a contagious passion for innovation, they have fun creating solutions that go beyond just solving problems; they want to enhance everyone's everyday experience. With a super collaborative spirit, they're always exploring new tools and trends, looking for creative ways to integrate technology into everything from health to education. Their goal? To make every line of code they write help make the world a more accessible and inspiring place—all while having fun in the process!</p>
-            </section>
-            <section id="services">
-                <h2>Services</h2>
-                <p>Meet Lulu, a generative AI chatbot that's here to help young people in Luxembourg learn new languages! In a country where a mix of languages is the norm, Lulu has become the perfect partner for anyone looking to master French, German, Luxembourgish, and even English, all in a light and fun way. With a relaxed approach, Lulu turns every chat into an interactive lesson, packed with tips, exercises, and even games. This way, young people can practice while having fun, exploring the world of languages and feeling more confident in their day-to-day lives in such a multicultural environment. With Lulu, learning a new language becomes an exciting adventure!</p>
-            </section>
-            <section id="contact">
-                <h2>Contact</h2>
-                <p> </p>
-            </section>
-        </main>
-    </div>
-</body>
+    </head>
+
+    <body>
+
+        <div class="container">
+            
+            {% include 'sidebar.html' %}
+
+            <main class="content">
+
+                {% include 'header.html' %}
+
+                <div class = "div_models">
+                    
+                    <h1>Moyen, {{ user.first_name }}</h1>
+                    <h4>Choose your assisstant today</h4>
+                    
+                    <div class="div_carrosel_models">
+                        <div class="carousel-container">
+                            <div class="carousel-item">
+                                <a href="lulu">
+                                    <img src="{% static 'img/lulu_bot.png' %}" class="carousel-img" alt="Lulu">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                
+                <div class = "footer">
+                    <p>We are an experimental start-up. Thank you for testing</p>
+                </div>    
+            </main>
+        </div>
+
+        <script src="{% static 'js/scripts.js' %}"></script> 
+        
+    </body>
+
 </html>
+

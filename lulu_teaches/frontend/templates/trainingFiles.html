@@ -7,26 +7,17 @@
     <title>Lulu MVP | Training and Fine Tune Files</title>
     <link rel="stylesheet" href="{% static 'css/home_styles.css' %}">
 
+
 </head>
 <body>
     <div class="container">
         
-        <aside class="sidebar">
-            <h2>Menu</h2>
-            <ul>
-                <li><a href="{% url 'home' %}">Home</a></li>
-                <li><a href="lulu-a">Lulu A</a></li>
-                <li><a href="lulu-b">Lulu B</a></li>
-                <li><a href="{% url 'register' %}">Users</a></li>
-                <li class="selected"><a href="{% url 'register' %}">Training Files</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            <div class="lulu_icon">
-                <img src="{% static 'img/lulu_bot.png' %}" alt="Image Description" class="starters-image" />
-            </div>
-        </aside>
+        {% include 'sidebar.html' %}
 
         <main class="content">
+
+            {% include 'header.html' %}
+            
             <h1>Training and Fine Tune Files</h1>
             <button id="openModal" class="new-user-button">New File</button>
 
@@ -37,19 +28,25 @@
                         <th>File Name</th>
                         <th>File Proposal</th>
                         <th>File</th>
-                        <th>Created By</th>
                         <th>Created Date</th>
-                        <th>Status</th>
+                        <!-- <th>Created By</th> -->
+                        <!-- <th>Status</th> -->
                     </tr>
                 </thead>
                 <tbody>
-                    {% for user in users %}
+                    {% for training in trainings %}
                     <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td>{{ training.id }}</td>
+                        <td>{{ training.version_title }}</td>
+                        <td>
+                            {% if training.attachments %}
+                            <a href="{{ training.attachments.url }}" target="_blank">Download</a>
+                            {% else %}
+                            No File
+                            {% endif %}
+                        </td>
+                        <td>{{ training.comments }}</td>
+                        <td>{{ training.creation_date|date:"Y-m-d H:i" }}</td>
                     </tr>
                     {% endfor %}
                 </tbody>
@@ -60,7 +57,7 @@
                 <div class="modal-content">
                     <span class="close">&times;</span>
                     <h2>New File</h2>
-                    <form method="POST" action="{% url 'register' %}">
+                    <form method="POST" action="{% url 'training_list' %}" enctype="multipart/form-data">
                         {% csrf_token %}
                         {{ form.as_p }}
                         <button type="submit">Save</button>
