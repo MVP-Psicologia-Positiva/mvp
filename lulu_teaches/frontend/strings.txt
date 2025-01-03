@@ -1,0 +1,7 @@
+lulu-mvp:europe-west3:db-lulu
+
+v2.14.1/cloud-sql-proxy.x64 --address 0.0.0.0 --port 5432 lulu-mvp:europe-west3:db-lulu -credential_file=lulu-mvp-cred.json
+./cloud-sql-proxy --address 0.0.0.0 --port 5432 lulu-mvp:europe-west3:db-lulu --credential_file=lulu-mvp-cred.json
+
+
+./cloud-sql-proxy --credentials-file lulu-mvp-cred.json lulu-mvp:europe-west3:db-lulu

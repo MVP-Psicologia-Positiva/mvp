@@ -19,6 +19,9 @@ COPY . /app
 RUN pip install --upgrade pip
 RUN pip install --no-cache-dir -r requirements.txt
 
+# Rodar collectstatic antes de iniciar a aplicação
+RUN python manage.py collectstatic --noinput
+
 # Exponha a porta 8080 (usada pelo Cloud Run)
 EXPOSE 8080
 
