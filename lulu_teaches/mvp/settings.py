@@ -1,16 +1,41 @@
 from pathlib import Path
 import os
-import django_heroku
-from django.conf import settings
-from decouple import config
+import environ
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-# Quick-start development settings - unsuitable for production
-SECRET_KEY = os.getenv('SECRET_KEY', 'default_secret_key')
-DEBUG = False
-ALLOWED_HOSTS = ['https://img-lulu-mvp-988538575854.us-central1.run.app/']
+env = environ.Env(
+    DEBUG=(bool, False),
+    SECRET_KEY=(str,'DEFAULT'),
+    DATABASE_URL=(str,'DEFAULT'),
+    ENVIRONMENT=(str,'DEFAULT'),
+    DB_NAME=(str,'DEFAULT'),
+    DB_USER=(str,'DEFAULT'),
+    DB_PASSWORD=(str,'DEFAULT'),
+    DB_HOST=(str,'DEFAULT'),
+    DB_PORT=(str,'5432'),
+)
+environ.Env.read_env()
+
+DEBUG = env('DEBUG')
+SECRET_KEY = env('SECRET_KEY')
+DB_PASSWORD = env('DB_PASSWORD')
+DATABASE_URL = env('DATABASE_URL')
+ENVIRONMENT=env('ENVIRONMENT')
+DB_NAME=env('DB_NAME')
+DB_USER=env('DB_USER')
+DB_HOST=env('DB_HOST')
+DB_PORT=env('DB_PORT')
+
+ALLOWED_HOSTS = [
+    'https://img-lulu-mvp-988538575854.us-central1.run.app/',
+    'https://img-lulu-mvp-988538575854.europe-west10.run.app',
+    'https://lulu-teaches-988538575854.europe-west3.run.app',
+    '127.0.0.1',
+    'localhost',           
+    '0.0.0.0'
+]
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
@@ -20,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.auth',
     'django.contrib.messages',
     'django.contrib.sites',
+
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
@@ -27,6 +53,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.microsoft',
     'allauth.socialaccount.providers.facebook',
     'allauth.socialaccount.providers.instagram',
+
     'lulu_teacher.apps.LuluTeacherConfig',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -74,27 +101,32 @@ TEMPLATES = [
 WSGI_APPLICATION = 'mvp.wsgi.application'
 
 # Database
-if(DEBUG==True):
-    DATABASES = { 
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': config('DB_NAME', default='default_db_name'),
-            'USER': config('DB_USER', default='default_user'),
-            'PASSWORD': config('DB_PASSWORD', default='default_password'),
-            'HOST': config('DB_HOST', default='localhost'),
-        }
+
+DATABASES = {
+    'default': env.db('DATABASE_URL')
+}
+
+if env.str('ENVIRONMENT') == 'production':
+    
+    DATABASES['default'] = {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': env('DB_NAME'),
+        'USER': env('DB_USER'),
+        'PASSWORD': env('DB_PASSWORD'),
+        'HOST': env('DB_HOST'), 
+        'PORT': env('DB_PORT', default='5432'), 
     }
-else: 
-    DATABASES = { 
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': os.getenv('DB_NAME', 'default_db_name'),
-            'USER': os.getenv('DB_USER', 'default_user'),
-            'PASSWORD': os.getenv('DB_PASSWORD', 'default_password'),
-            'HOST': 'lulu-mvp:europe-west3:db-lulu',
-            'PORT': '5432',
-        }
+else:
+
+    DATABASES['default'] = {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'db-lulu-mvp',
+        'USER': 'myuser',
+        'PASSWORD': env('DB_PASSWORD'),
+        'HOST': env('DB_HOST'),
+        'PORT':'5432'
     }
+
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -124,4 +156,4 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
-django_heroku.settings(locals())
+

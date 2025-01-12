@@ -7,13 +7,11 @@ RUN apt-get update && apt-get install -y \
     gcc \
     && rm -rf /var/lib/apt/lists/*
 
-
 # Defina o diretório de trabalho
-WORKDIR /app
+WORKDIR /lulu_teaches
 
 # Copie os arquivos do projeto
-COPY . /app
-
+COPY . /lulu_teaches
 
 # Instale as dependências do Python
 RUN pip install --upgrade pip
@@ -25,5 +23,4 @@ RUN python manage.py collectstatic --noinput
 # Exponha a porta 8080 (usada pelo Cloud Run)
 EXPOSE 8080
 
-# Comando para rodar a aplicação
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8080"]
+CMD ["gunicorn", "mvp.wsgi:application", "--bind", "0.0.0.0:8080"]

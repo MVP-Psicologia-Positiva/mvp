@@ -2,3 +2,4 @@ secrets.toml
 .venv/
 .env
 db.sqlite3
+lulu-mvp-cred.json
