@@ -1,0 +1,50 @@
+version: '3.8'
+
+services:
+  
+  web:
+    build:
+      context: ./lulu_teaches 
+      dockerfile: Dockerfile
+    container_name: lulu-mvp-app-container
+    command: gunicorn mvp.wsgi:application --bind 0.0.0.0:8080
+    #volumes:
+    #  - .:/lulu_teaches
+    environment:
+      - ENVIRONMENT=development
+      - DB_HOST=db
+    env_file:
+      - .env
+    depends_on:
+      - db
+    networks:
+      - mynetwork
+
+  # Serviço do PostgreSQL
+  db:
+    image: postgres:13  # Imagem oficial do PostgreSQL
+    container_name: lulu-mvp-db-container
+    environment:
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    networks:
+      - mynetwork
+
+  # Serviço para rodar o Redis (caso seja necessário, exemplo com caching ou filas)
+  #redis:
+  #  image: redis:alpine
+  #  container_name: myproject_redis
+  #  networks:
+  #    - mynetwork
+
+# Volumes persistentes (para dados do banco de dados)
+volumes:
+  db-data:
+
+# Definindo a rede
+networks:
+  mynetwork:
+    driver: bridge

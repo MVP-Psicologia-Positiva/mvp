@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "lulu-mvp",
+  "private_key_id": "13fba71e1a847367915b100224a59fd8455b1e26",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQC1gsQh4g/m2TrT\ngLE3pEee16dVK9SV2j/WQlQwd/b2rGiEKcl6lSvUPE9Fl7z736qalMDEifPEVqql\nkwSM0U2Ey+iHumyMlsyDeL2PUZsz31Ll6bmofmf7FeSrQOk6J5rDemXEg8n5u7iD\n95C+K+aug295h0e61fLgSICx3DV9KGJzPbMSyi5ST+n0qu3GC9xyzpXBEfEIEAzi\n76QH3NfKwVALMlZdfXICV7O4Pr21sOQRT3kApCeKhT36DGmnBDJGlNdb+8outVND\n0Ly84JDe6qQLmVkH9/Ndw7FIlOuGBYmc/XucTHdv/S59ixT2bwCz45Pbq++bI4Jc\nTaDUX3mVAgMBAAECggEAC7pTxuau5VkS2nidur0kHYjMmI248ifEaSkm/Gy76ctR\nA30ZthBuYQu2iYYY4WNdyBglbm2FcSGya/lYWWrqqdJtB1wNyHWz6CjEgr6gmxTq\na82Sv+bO/CO5fzE2AJpvfwLpEW38fmTZMrmrwgXfJVZ7vOv3QASz6Tb2DcfvMtNt\n0ObWZtVVDWvt80u8/NPi/eelQP3Kpz+D/4NrNpkcQrUd54W1oHqgFZqK/ycqUzh6\nUPvCiHW3EkwYsCxUaKcDga4WTwjpGgMtYTNRDlHWFS5r+xDaI2/GNh0WllG2bE6O\nei0PQ7ARkP8ZkZqiZZ7NGHZRMC+1YNdV/r2izki0oQKBgQDbDmeewzAziqowT3CT\n6el2bOfH01lfHTkEe9mrjvZuxxTzzKhuD6ByblFh5TQVQqvY1z9e9YzVLhH5kbzR\nWZd+E4KYDgGI3lLNEtjvTK6eLaBs4zAWS3ewTdcykbmRmXqjwYuA650x9AsFTmtd\nwDUi8v0X/ISPCnIkeMKzyJZVRQKBgQDUH1z/kHTWINnYhlLZRDdys3326MqEQH7f\nl+Dv6rBAGMeeftOYEWRqXAjxgaiKIzrgo1ePOTvtAZr1ErwT74LhrkZFKVP+VWqC\nyG2Vx81TRQNpdTM7KXKXCsRXF1N+E0vDznmpJo2khEdejeBEa87gbYl+aR7CI0j/\n75h+1wmQEQKBgD26nXCbyGV92d+rQyorbGK25cnlwPWQopSk4f36V294ImthbMU3\nGhulAsH3eOnU0+BTJ8R2pa0dQmt1qiPEf3BDxzVaHQyYufSYLxGgJkTkzqRgkRh3\nQ88m4FGbxxNEkM68p7c4rh95ifGA27ibhV3H45Jy0lgMtYWZkiRfjh2RAoGAFv/3\nk3ZUVMtnE4UtAoXVBUjVBaqkGsbres77AsiNp8WID3Vs9/YazzV/esA2SBQd1DGh\n0tO/3ajo5l3LqtWzeUjuMZ2Tj+YvEFMvHqh1aOv4vLyKe4W4+Quf0lmjIe5xrp96\nrY6SmR4Gpwf3IzQVUFxQJja7sQ0mYynVfRtP3CECgYAdVkpA0PdDyfJrNbsidoEg\niYIgB8n+0QnP2D9jiecxKv3e2+1IiK8PzcarcHQWnGQ7GNM9jxrNs/Gao/MnieIh\nuB6XN4JNOMHWiS5SYSQvwTsuOOzmNDg5nDALB1veQykEAcjJgNEvR3RBOLd3VR2W\nuh9+KhJOXQQ2Xsa++C9uug==\n-----END PRIVATE KEY-----\n",
+  "client_email": "lulu-auth-service@lulu-mvp.iam.gserviceaccount.com",
+  "client_id": "100817368794575387285",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/lulu-auth-service%40lulu-mvp.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
